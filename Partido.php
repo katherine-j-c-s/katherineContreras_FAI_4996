@@ -39,14 +39,14 @@ class Partido{
     }
 
 
- public function setCantGolesE1($cantGolesE1){
+    public function setCantGolesE1($cantGolesE1){
         $this->cantGolesE1= $cantGolesE1;
     }
 
     public function getCantGolesE1(){
         return $this->cantGolesE1;
     }
- public function setCantGolesE2($cantGolesE2){
+    public function setCantGolesE2($cantGolesE2){
         $this->cantGolesE2= $cantGolesE2;
     }
 
@@ -56,7 +56,7 @@ class Partido{
 
 
 
- public function setObjEquipo1($objEquipo1){
+    public function setObjEquipo1($objEquipo1){
         $this->objEquipo1= $objEquipo1;
     }
     public function getObjEquipo1(){
@@ -64,25 +64,39 @@ class Partido{
     }
 
 
- public function setObjEquipo2($objEquipo2){
+    public function setObjEquipo2($objEquipo2){
         $this->objEquipo2= $objEquipo2;
     }
     public function getObjEquipo2(){
         return $this->objEquipo2;
     }
 
-
-
-
-     public function setCoefBase($coefBase){
+    public function setCoefBase($coefBase){
          $this->coefBase = $coefBase;
     }
-      public function getCoefBase(){
+    public function getCoefBase(){
         return $this->coefBase;
     }
 
+    // En cada partido se gestiona un coeficiente base cuyo valor por defecto es 0.5  y es aplicado a la 
+    // cantidad de goles y a la cantidad de jugadores de cada equipo. Es decir: coef =  0,5 * cantGoles * cantJugadores  
+    // donde cantGoles : es la cantidad de goles;   cantJugadores : es la cantidad de jugadores.
 
+    // Implementar el método coeficientePartido() en la clase Partido el cual retorna el valor obtenido 
+    // por el coeficiente base, multiplicado por la cantidad de goles y la cantidad de jugadores. 
+    // Redefinir dicho método según corresponda.
+    public function coeficientePartido(){
+        $cantGoles= $this->getCantGolesE1() + $this->getCantGolesE2();
 
+        $jugadoresEquipo1= $this->getObjEquipo1()->getCantJugadores();
+        $jugadoresEquipo2= $this->getObjEquipo2()->getCantJugadores();
+        $cantJugadores = $jugadoresEquipo1 + $jugadoresEquipo2;
+
+        $coeficiente= $this->getCoefBase();
+
+        $coeficientePartido = $coeficiente * $cantGoles * $cantJugadores;
+        return $coeficientePartido;
+    }
 public function __toString(){
         //string $cadena
         $cadena = "idpartido: ".$this->getIdpartido()."\n";
