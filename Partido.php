@@ -1,5 +1,5 @@
 <?php
-class Partido{
+class Partido {
     private $idpartido;
     private $fecha;
     private $objEquipo1;
@@ -97,7 +97,30 @@ class Partido{
         $coeficientePartido = $coeficiente * $cantGoles * $cantJugadores;
         return $coeficientePartido;
     }
-public function __toString(){
+    /**
+     * Implementar en la clase Partido el método darEquipoGanador() que retorna el equipo ganador de un partido 
+     * (equipo con mayor cantidad de goles del partido), en caso de empate debe retornar a los dos equipos.
+    */
+    public function darEquipoGanador(){
+        $getCantGolesE1= $this->getCantGolesE1();
+        $getCantGolesE2= $this->getCantGolesE2();
+
+        $equipoGanador= "El ganador es!!\n";
+        $equipo1=$this->getObjEquipo1();
+        $equipo2=$this->getObjEquipo2();
+        
+        if($getCantGolesE1 > $getCantGolesE2){
+            $equipoGanador.= $equipo1;
+        }elseif($getCantGolesE1 < $getCantGolesE2){
+            $equipoGanador.= $equipo2;
+        }else{
+            $equipoGanador.= "\nAMBOS EQUIPOS GANAN\n";
+            $equipoGanador.= $equipo1;
+            $equipoGanador.= $equipo2;
+        }
+        return $equipoGanador;
+    }
+    public function __toString(){
         //string $cadena
         $cadena = "idpartido: ".$this->getIdpartido()."\n";
         $cadena = $cadena. "Fecha: ".$this->getFecha()."\n";
