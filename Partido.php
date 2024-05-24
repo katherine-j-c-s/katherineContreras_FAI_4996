@@ -7,18 +7,18 @@ class Partido {
     private $objEquipo2;
     private $cantGolesE2;
     private $coefBase;
+    private $tipoDeDeporte;
 
     //CONSTRUCTOR
-    public function __construct($idpartido, $fecha,$objEquipo1,$cantGolesE1,$objEquipo2,$cantGolesE2){
-            $this->idpartido = $idpartido;
-            $this->fecha = $fecha;
-            $this->objEquipo1 =$objEquipo1;
-            $this->cantGolesE1 = $cantGolesE1;
-            $this->objEquipo2 = $objEquipo2;
-            $this->cantGolesE2 = $cantGolesE2;
-            $this->coefBase = 0.5;
-
-
+    public function __construct($idpartido, $fecha,$objEquipo1,$cantGolesE1,$objEquipo2,$cantGolesE2, $tipoDeDeporte){
+        $this->idpartido = $idpartido;
+        $this->fecha = $fecha;
+        $this->objEquipo1 =$objEquipo1;
+        $this->cantGolesE1 = $cantGolesE1;
+        $this->objEquipo2 = $objEquipo2;
+        $this->cantGolesE2 = $cantGolesE2;
+        $this->tipoDeDeporte = $tipoDeDeporte;
+        $this->coefBase = 0.5;
     }
 
     //OBSERVADORES
@@ -38,7 +38,12 @@ class Partido {
         return $this->fecha;
     }
 
-
+    public function setTipoDeDeporte($tipoDeDeporte){
+        $this->tipoDeDeporte= $tipoDeDeporte;
+    }
+    public function getTipoDeDeporte(){
+        return $this->tipoDeDeporte;
+    }
     public function setCantGolesE1($cantGolesE1){
         $this->cantGolesE1= $cantGolesE1;
     }
@@ -53,8 +58,6 @@ class Partido {
     public function getCantGolesE2(){
         return $this->cantGolesE2;
     }
-
-
 
     public function setObjEquipo1($objEquipo1){
         $this->objEquipo1= $objEquipo1;

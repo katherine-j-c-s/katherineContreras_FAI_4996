@@ -22,11 +22,12 @@ class Categoria {
     public function setDescripcion($descripcion){
         $this->descripcion= $descripcion;
     }
-    
+
     public function __toString(){
         //string $cadena
-        $cadena = "IdCategori: ".$this->getidcategoria()."\n";
-        $cadena = $cadena. "descripcion: ".$this->getDescripcion()."\n";
+        $cadena = "IdCategori: ".$this->getidcategoria()."\n"
+        . "descripcion: ".$this->getDescripcion()."\n";
+        return $cadena;
     }
 }
 ?>
